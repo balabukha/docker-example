@@ -1,5 +1,5 @@
 const express = require("express");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { connectDb } = require("./helpers/db");
 const app = express();
 const { port, host } = require("./configuration");
@@ -8,8 +8,7 @@ const postSchema = new mongoose.Schema({
   name: String
 });
 
-const Post = mongoose.model('Post', postSchema);
-
+const Post = mongoose.model("Post", postSchema);
 
 const startServer = () => {
   app.listen(port, () => {
@@ -18,9 +17,15 @@ const startServer = () => {
   });
 };
 
-
 app.get("/test", (req, res) => {
   res.send("API WORKS!");
+});
+
+app.get("/api/current-user", (req, res) => {
+  res.json({
+    id: "1234",
+    email: "foo@foo.com"
+  });
 });
 
 connectDb()
