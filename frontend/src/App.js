@@ -1,8 +1,17 @@
 import React from 'react';
+import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const makeApiRequest = () => {
+    console.log(`%c --CHECK [1]--`,"color: red; font-size: 12px; font-family: Roboto", 'MAKE API');
+    axios('api/test-with-current-user').then((response) => {
+      console.log(`%c --CHECK [1]--`,"color: red; font-size: 12px; font-family: Roboto", response);
+    })
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +28,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <button onClick={makeApiRequest}>make Api Request</button>
     </div>
   );
 }
